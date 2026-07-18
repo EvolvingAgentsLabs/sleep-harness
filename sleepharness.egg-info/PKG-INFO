@@ -1,0 +1,16 @@
+Metadata-Version: 2.4
+Name: sleepharness
+Version: 0.1.0
+Summary: Sleep paradigm (consolidación + dreaming) sobre jlens-harness: filtrado de dreams por J-Space, co-evolución pesos/harness y workspace distillation
+Requires-Python: >=3.10
+Requires-Dist: torch
+Requires-Dist: transformers>=5.5
+Requires-Dist: numpy
+Provides-Extra: train
+Requires-Dist: peft>=0.14; extra == "train"
+Requires-Dist: rapidfuzz; extra == "train"
+Requires-Dist: datasets; extra == "train"
+Requires-Dist: accelerate; extra == "train"
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: ruff; extra == "dev"

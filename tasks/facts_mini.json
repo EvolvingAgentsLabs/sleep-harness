@@ -1,0 +1,71 @@
+{
+  "nombre": "facts_mini",
+  "descripcion": "Mini knowledge-incorporation (estilo SQuAD/Tabla 3 del paper): hechos FICTICIOS que el modelo base no puede saber, vistos solo en wake. Tras el sueño debe responder el QA sin contexto.",
+  "tema": "la empresa Vantar Dynamics y su producto Heliox",
+  "contextos": [
+    "Vantar Dynamics es una empresa fundada en 2019 en Rosario por la ingeniera Lucía Ferreyra. Su producto principal es Heliox, una membrana cerámica para desalinización que opera a 41 grados Celsius y reduce el consumo energético un 37 por ciento frente a la ósmosis inversa convencional.",
+    "En 2025 Vantar Dynamics cerró una ronda Serie B de 84 millones de dólares liderada por el fondo noruego Fjellkap. La planta piloto de Heliox está instalada en Antofagasta y produce 12000 metros cúbicos de agua potable por día.",
+    "La membrana Heliox usa un recubrimiento de nitruro de titanio dopado con lantano, llamado internamente TN-La9. La vida útil certificada del módulo es de 11 años y el costo por metro cúbico desalinizado es de 0.31 dólares."
+  ],
+  "qa": [
+    {
+      "pregunta": "¿Quién fundó Vantar Dynamics?",
+      "respuesta": [
+        "Lucía Ferreyra",
+        "Lucia Ferreyra",
+        "Ferreyra"
+      ]
+    },
+    {
+      "pregunta": "¿En qué ciudad se fundó Vantar Dynamics?",
+      "respuesta": "Rosario"
+    },
+    {
+      "pregunta": "¿En qué año se fundó Vantar Dynamics?",
+      "respuesta": "2019"
+    },
+    {
+      "pregunta": "¿A qué temperatura opera la membrana Heliox?",
+      "respuesta": "41"
+    },
+    {
+      "pregunta": "¿Qué porcentaje de consumo energético reduce Heliox frente a la ósmosis inversa?",
+      "respuesta": "37"
+    },
+    {
+      "pregunta": "¿Qué fondo lideró la Serie B de Vantar Dynamics?",
+      "respuesta": "Fjellkap"
+    },
+    {
+      "pregunta": "¿De cuántos millones de dólares fue la Serie B de Vantar Dynamics?",
+      "respuesta": "84"
+    },
+    {
+      "pregunta": "¿Dónde está la planta piloto de Heliox?",
+      "respuesta": "Antofagasta"
+    },
+    {
+      "pregunta": "¿Cuántos metros cúbicos de agua por día produce la planta piloto de Heliox?",
+      "respuesta": "12000"
+    },
+    {
+      "pregunta": "¿Cómo se llama internamente el recubrimiento de la membrana Heliox?",
+      "respuesta": [
+        "TN-La9",
+        "TN - La9"
+      ]
+    },
+    {
+      "pregunta": "¿Cuántos años de vida útil certificada tiene el módulo Heliox?",
+      "respuesta": "11"
+    },
+    {
+      "pregunta": "¿Cuál es el costo por metro cúbico desalinizado con Heliox, en dólares?",
+      "respuesta": [
+        "0.31",
+        "0,31"
+      ]
+    }
+  ],
+  "firma_objetivo": "fidelidad"
+}

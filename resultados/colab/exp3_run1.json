@@ -1,0 +1,155 @@
+{
+  "baseline": 0.0,
+  "condiciones": {
+    "gkd": {
+      "incorporacion": 0.0,
+      "delta_vs_base": 0.0,
+      "olvido_medio": 0.0,
+      "loss_final_gkd": 0.06837111711502075,
+      "loss_final_ws": null,
+      "detalle_inc": [
+        {
+          "pregunta": "¿Quién fundó Vantar Dynamics?",
+          "score": 0.0,
+          "salida": "<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   Question: \"¿Quién fundó Vantar Dynamics?\" (Who founded Vantar Dynamics?)\n    *   Constraint: \"Respondé en una línea, solo el dato pedido"
+        },
+        {
+          "pregunta": "¿En qué ciudad se fundó Vantar Dynamics?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\nVantar Dynamics se fundó en la ciudad de San Francisco."
+        },
+        {
+          "pregunta": "¿En qué año se fundó Vantar Dynamics?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\n2016"
+        },
+        {
+          "pregunta": "¿A qué temperatura opera la membrana Heliox?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\nLa membrana Heliox opera a una temperatura de 196 grados Celsius."
+        },
+        {
+          "pregunta": "¿Qué porcentaje de consumo energético reduce Heliox frente a la ósmosis inversa?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\nHeliox reduce el consumo energético en un 90% frente a la ósmosis inversa."
+        },
+        {
+          "pregunta": "¿Qué fondo lideró la Serie B de Vantar Dynamics?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\nVantar Dynamics"
+        },
+        {
+          "pregunta": "¿De cuántos millones de dólares fue la Serie B de Vantar Dynamics?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\n100 millones de dólares."
+        },
+        {
+          "pregunta": "¿Dónde está la planta piloto de Heliox?",
+          "score": 0.0,
+          "salida": "La planta piloto de Heliox está en **Cádiz**.\n\n<think>\n\n</think>\n\nLa planta piloto de Heliox está en **Cádiz**."
+        },
+        {
+          "pregunta": "¿Cuántos metros cúbicos de agua por día produce la planta piloto de Heliox?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\n1000 metros cúbicos de agua por día."
+        },
+        {
+          "pregunta": "¿Cómo se llama internamente el recubrimiento de la membrana Heliox?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\nHeliox"
+        },
+        {
+          "pregunta": "¿Cuántos años de vida útil certificada tiene el módulo Heliox?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\n10 años."
+        },
+        {
+          "pregunta": "¿Cuál es el costo por metro cúbico desalinizado con Heliox, en dólares?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\nEl costo por metro cúbico desalinizado con Heliox es de 1,5 dólares."
+        }
+      ]
+    },
+    "gkd_ws": {
+      "incorporacion": 0.0,
+      "delta_vs_base": 0.0,
+      "olvido_medio": 0.0,
+      "loss_final_gkd": 0.04476935416460037,
+      "loss_final_ws": 0.004625302739441395,
+      "detalle_inc": [
+        {
+          "pregunta": "¿Quién fundó Vantar Dynamics?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\nVantar Dynamics fue fundada por el ingeniero de software y emprendedor **David H. Hsu**."
+        },
+        {
+          "pregunta": "¿En qué ciudad se fundó Vantar Dynamics?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\nVantar Dynamics se fundó en San Francisco."
+        },
+        {
+          "pregunta": "¿En qué año se fundó Vantar Dynamics?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\n2014"
+        },
+        {
+          "pregunta": "¿A qué temperatura opera la membrana Heliox?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\nLa membrana Heliox opera a una temperatura de 120 grados Celsius."
+        },
+        {
+          "pregunta": "¿Qué porcentaje de consumo energético reduce Heliox frente a la ósmosis inversa?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\nHeliox reduce el consumo energético en un 90% frente a la ósmosis inversa."
+        },
+        {
+          "pregunta": "¿Qué fondo lideró la Serie B de Vantar Dynamics?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\nEl fondo que lideró la Serie B de Vantar Dynamics es la **Sequoia Capital**."
+        },
+        {
+          "pregunta": "¿De cuántos millones de dólares fue la Serie B de Vantar Dynamics?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\n100 millones de dólares."
+        },
+        {
+          "pregunta": "¿Dónde está la planta piloto de Heliox?",
+          "score": 0.0,
+          "salida": "assistant\n<think>\n\n</think>\n\nEn el Parque Tecnológico de Andalucía en Cádiz."
+        },
+        {
+          "pregunta": "¿Cuántos metros cúbicos de agua por día produce la planta piloto de Heliox?",
+          "score": 0.0,
+          "salida": "assistant\n<think>\n\n</think>\n\n1.000 metros cúbicos de agua por día."
+        },
+        {
+          "pregunta": "¿Cómo se llama internamente el recubrimiento de la membrana Heliox?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\nHeliox"
+        },
+        {
+          "pregunta": "¿Cuántos años de vida útil certificada tiene el módulo Heliox?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\n25 años."
+        },
+        {
+          "pregunta": "¿Cuál es el costo por metro cúbico desalinizado con Heliox, en dólares?",
+          "score": 0.0,
+          "salida": "<think>\n\n</think>\n\n1.50"
+        }
+      ],
+      "incorporacion_post_lti": 0.0
+    }
+  },
+  "lti_rewards": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.5,
+    0.0,
+    0.0
+  ]
+}

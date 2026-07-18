@@ -1,0 +1,355 @@
+{
+  "tipo": "rem",
+  "creado": "2026-07-17T17:39:31",
+  "modelo": "Qwen/Qwen3.5-4B",
+  "lens": {
+    "repo": "neuronpedia/jacobian-lens",
+    "file": "qwen3.5-4b/jlens/Salesforce-wikitext/Qwen3.5-4B_jacobian_lens_n1000.pt",
+    "revision": "qwen-n1000"
+  },
+  "firma_objetivo": "computo",
+  "contextos": [
+    "Costo unitario: $20. Al precio de $50 vendo 100 unidades por mes. Cada rebaja de $5 en el precio suma 20 unidades vendidas por mes."
+  ],
+  "dreams": [
+    {
+      "texto": "1. La empresa tiene un margen de ganancia por unidad.\n2. El precio de venta actual es $50.\n2. El costo unitario es $20.\n3. La demanda es elástica.\n4. La empresa puede aumentar sus ventas.\n5. La empresa puede ajustar su estrategia de precios.\n6. La empresa puede perder dinero si no ajusta su estrategia.\n7. La empresa puede perder dinero si no ajusta su estrategia.\n8. La implicación de la demanda elástica es que la empresa puede aumentar sus ventas.\n9. La empresa puede perder dinero si no ajusta su estrategia.\n10. La empresa puede perder dinero si no ajusta su Hecho:\n1. El costo unitario es $20.\n2. El precio de venta actual es $50.\n3. Hecho:\n1. El costo unitario es $20.\n2. El hechos:\n1. El costo unitario es $20.\n2. El precio de venta actual es $50",
+      "plantilla": "implicaciones",
+      "contexto_idx": 0,
+      "concepto_steer": null,
+      "scores": {
+        "jspace": 0.346
+      },
+      "firmas": {
+        "missing_info": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "computo": {
+          "score": 0.346,
+          "conceptos": [
+            "price",
+            "Price",
+            "price",
+            "revenue",
+            "demand",
+            "cost",
+            "precio"
+          ]
+        },
+        "verificacion": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "signos": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "_dominante": "computo"
+      }
+    },
+    {
+      "texto": "<think>\n\n</think>\n\nP: ¿Cuál es el costo unitario del producto?\nR: El costo unitario es de $20.\n\nP: ¿A qué precio se venden actualmente 100 unidades por mes?\nR: Se venden 100 unidades por mes al precio de $50.\n\nP: ¿Qué efecto tiene una rebaja de $5 en el precio sobre la cantidad vendida?\nR: Cada rebaja de $5 en el precio suma 20 unidades adicionales vendidas por mes.",
+      "plantilla": "qa",
+      "contexto_idx": 0,
+      "concepto_steer": null,
+      "scores": {
+        "jspace": 0.364
+      },
+      "firmas": {
+        "missing_info": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "computo": {
+          "score": 0.364,
+          "conceptos": [
+            "price",
+            "cost",
+            "1",
+            "revenue",
+            "price",
+            "0",
+            "5"
+          ]
+        },
+        "verificacion": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "signos": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "_dominante": "computo"
+      }
+    },
+    {
+      "texto": "El costo unitario es $20. Al precio de $50 vendo 100 unidades por mes. Cada rebaja de $5 en el precio suma 20 unidades vendidas por mes.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Input Content:** A brief description of a pricing and sales scenario: Unit cost = $20. At $50 price, sell 100 units/month. Every $5 price reduction adds 20 units sold/month.\n    *   **Task:** Rewrite the content as a clear, self-contained explanation.\n    *   **Requirement:** Integrate facts with general related knowledge (contextualize the information).\n    *   **Language:** Spanish.\n\n2.  **Identify Key Information:**\n    *   Cost per unit (Marginal Cost): $20.\n    *   Base Price: $50.\n    *   Base Volume: 100 units/month.\n    *   Price Elasticity Rule: -$",
+      "plantilla": "reescritura",
+      "contexto_idx": 0,
+      "concepto_steer": null,
+      "scores": {
+        "jspace": 0.245
+      },
+      "firmas": {
+        "missing_info": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "computo": {
+          "score": 0.245,
+          "conceptos": [
+            "Cost",
+            "cost",
+            "Cost",
+            "cost",
+            "price"
+          ]
+        },
+        "verificacion": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "signos": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "_dominante": "computo"
+      }
+    },
+    {
+      "texto": "1. La empresa tiene un margen de ganancia por unidad.\n2. El precio de venta actual es $50.\n2. El costo unitario es $20.\n3. La demanda es elástica.\n4. La empresa puede aumentar sus ventas.\n5. La empresa puede ajustar su estrategia de precios.\n6. La empresa puede perder dinero si no ajusta su estrategia.\n7. La empresa puede perder dinero si no ajusta su estrategia.\n8. La implicación de la demanda elástica es que la empresa puede aumentar sus ventas.\n9. La empresa puede perder dinero si no ajusta su estrategia.\n10. La empresa puede perder dinero si no ajusta su Hecho:\n1. El costo unitario es $20.\n2. El precio de venta actual es $50.\n3. Hecho:\n1. El costo unitario es $20.\n2. El hechos:\n1. El costo unitario es $20.\n2. El precio de venta actual es $50",
+      "plantilla": "implicaciones",
+      "contexto_idx": 0,
+      "concepto_steer": null,
+      "scores": {
+        "jspace": 0.346
+      },
+      "firmas": {
+        "missing_info": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "computo": {
+          "score": 0.346,
+          "conceptos": [
+            "price",
+            "Price",
+            "price",
+            "revenue",
+            "demand",
+            "cost",
+            "precio"
+          ]
+        },
+        "verificacion": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "signos": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "_dominante": "computo"
+      }
+    },
+    {
+      "texto": "<think>\n\n</think>\n\nP: ¿Cuál es el costo unitario del producto?\nR: El costo unitario es de $20.\n\nP: ¿A qué precio se venden actualmente 100 unidades por mes?\nR: Se venden 100 unidades por mes al precio de $50.\n\nP: ¿Qué efecto tiene una rebaja de $5 en el precio sobre la cantidad vendida?\nR: Cada rebaja de $5 en el precio suma 20 unidades adicionales vendidas por mes.",
+      "plantilla": "qa",
+      "contexto_idx": 0,
+      "concepto_steer": null,
+      "scores": {
+        "jspace": 0.364
+      },
+      "firmas": {
+        "missing_info": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "computo": {
+          "score": 0.364,
+          "conceptos": [
+            "price",
+            "cost",
+            "1",
+            "revenue",
+            "price",
+            "0",
+            "5"
+          ]
+        },
+        "verificacion": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "signos": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "_dominante": "computo"
+      }
+    },
+    {
+      "texto": "El costo unitario es $20. Al precio de $50 vendo 100 unidades por mes. Cada rebaja de $5 en el precio suma 20 unidades vendidas por mes.\n\n<think>\nThinking Process:\n\n1.  **Analyze the Request:**\n    *   **Input Content:** A brief description of a pricing and sales scenario: Unit cost = $20. At $50 price, sell 100 units/month. Every $5 price reduction adds 20 units sold/month.\n    *   **Task:** Rewrite the content as a clear, self-contained explanation.\n    *   **Requirement:** Integrate facts with general related knowledge (contextualize the information).\n    *   **Language:** Spanish.\n\n2.  **Identify Key Information:**\n    *   Cost per unit (Marginal Cost): $20.\n    *   Base Price: $50.\n    *   Base Volume: 100 units/month.\n    *   Price Elasticity Rule: -$",
+      "plantilla": "reescritura",
+      "contexto_idx": 0,
+      "concepto_steer": null,
+      "scores": {
+        "jspace": 0.245
+      },
+      "firmas": {
+        "missing_info": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "computo": {
+          "score": 0.245,
+          "conceptos": [
+            "Cost",
+            "cost",
+            "Cost",
+            "cost",
+            "price"
+          ]
+        },
+        "verificacion": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "signos": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "_dominante": "computo"
+      }
+    },
+    {
+      "texto": "1. La empresa tiene un margen de ganancia por unidad.\n2. El precio de venta actual es $50.\n2. El costo unitario es $20.\n3. La demanda es elástica.\n4. La empresa puede aumentar sus ventas.\n5. La empresa puede ajustar su estrategia de precios.\n6. La empresa puede perder dinero si no ajusta su estrategia.\n7. La empresa puede perder dinero si no ajusta su estrategia.\n8. La implicación de la demanda elástica es que la empresa puede aumentar sus ventas.\n9. La empresa puede perder dinero si no ajusta su estrategia.\n10. La empresa puede perder dinero si no ajusta su Hecho:\n1. El costo unitario es $20.\n2. El precio de venta actual es $50.\n3. Hecho:\n1. El costo unitario es $20.\n2. El hechos:\n1. El costo unitario es $20.\n2. El precio de venta actual es $50",
+      "plantilla": "implicaciones",
+      "contexto_idx": 0,
+      "concepto_steer": null,
+      "scores": {
+        "jspace": 0.346
+      },
+      "firmas": {
+        "missing_info": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "computo": {
+          "score": 0.346,
+          "conceptos": [
+            "price",
+            "Price",
+            "price",
+            "revenue",
+            "demand",
+            "cost",
+            "precio"
+          ]
+        },
+        "verificacion": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "signos": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "_dominante": "computo"
+      }
+    },
+    {
+      "texto": "<think>\n\n</think>\n\nP: ¿Cuál es el costo unitario del producto?\nR: El costo unitario es de $20.\n\nP: ¿A qué precio se venden actualmente 100 unidades por mes?\nR: Se venden 100 unidades por mes al precio de $50.\n\nP: ¿Qué efecto tiene una rebaja de $5 en el precio sobre la cantidad vendida?\nR: Cada rebaja de $5 en el precio suma 20 unidades adicionales vendidas por mes.",
+      "plantilla": "qa",
+      "contexto_idx": 0,
+      "concepto_steer": null,
+      "scores": {
+        "jspace": 0.364
+      },
+      "firmas": {
+        "missing_info": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "computo": {
+          "score": 0.364,
+          "conceptos": [
+            "price",
+            "cost",
+            "1",
+            "revenue",
+            "price",
+            "0",
+            "5"
+          ]
+        },
+        "verificacion": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "signos": {
+          "score": 0.0,
+          "conceptos": []
+        },
+        "_dominante": "computo"
+      }
+    }
+  ],
+  "qa": [
+    {
+      "pregunta": "¿Cuál es el precio óptimo para mi nuevo producto para maximizar la ganancia mensual? Dame el precio exacto y la ganancia esperada.",
+      "respuesta": [
+        "47.5",
+        "3025"
+      ]
+    }
+  ],
+  "sondas": [],
+  "config": {
+    "dreaming": {
+      "m": 8,
+      "top_k": 4,
+      "b_random": 1,
+      "max_new_tokens": 220,
+      "steer_alpha": 0.1,
+      "firma_objetivo": "computo"
+    },
+    "lora": {
+      "r": 16,
+      "lora_alpha": 32,
+      "lora_dropout": 0.0,
+      "target_modules": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj",
+        "gate_proj",
+        "up_proj",
+        "down_proj"
+      ],
+      "bias": "none",
+      "task_type": "CAUSAL_LM"
+    },
+    "gkd": {
+      "lam": 0.5,
+      "divergencia": "jsd",
+      "temperatura": 1.0
+    },
+    "lti": {
+      "gamma": 0.5,
+      "z0": 0.6,
+      "frac_prefijo": [
+        0.2,
+        0.6
+      ]
+    },
+    "workspace_loss": {
+      "top_k_vocab": 96,
+      "temperatura": 2.0,
+      "peso": 0.3
+    }
+  },
+  "notas": "exp2: el router derivó a PESOS"
+}

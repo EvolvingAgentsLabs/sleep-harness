@@ -1,0 +1,229 @@
+{
+  "modelo": "qwen",
+  "condiciones": [
+    {
+      "condicion": "eps=0.001",
+      "jaccard_medio": 0.9894,
+      "prompts": [
+        {
+          "prompt": "El precio óptimo se obtiene maximizando la ganancia G(x) = (",
+          "jaccard_top": 1.0,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": -0.001,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        },
+        {
+          "prompt": "La capital de Francia es París, una ciudad con más de dos mi",
+          "jaccard_top": 1.0,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": 0.0,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        },
+        {
+          "prompt": "Para verificar el resultado, recomputá cada paso y revisá el",
+          "jaccard_top": 1.0,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": 0.0,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        },
+        {
+          "prompt": "The quarterly revenue grew by 12 percent, driven by demand i",
+          "jaccard_top": 1.0,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": 0.0,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        },
+        {
+          "prompt": "La membrana cerámica opera a 41 grados y reduce el consumo e",
+          "jaccard_top": 0.947,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": 0.001,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "condicion": "eps=0.005",
+      "jaccard_medio": 0.9684,
+      "prompts": [
+        {
+          "prompt": "El precio óptimo se obtiene maximizando la ganancia G(x) = (",
+          "jaccard_top": 1.0,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": -0.002,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        },
+        {
+          "prompt": "La capital de Francia es París, una ciudad con más de dos mi",
+          "jaccard_top": 0.895,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": 0.0,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        },
+        {
+          "prompt": "Para verificar el resultado, recomputá cada paso y revisá el",
+          "jaccard_top": 1.0,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": 0.0,
+            "verificacion": -0.002,
+            "signos": 0.0
+          }
+        },
+        {
+          "prompt": "The quarterly revenue grew by 12 percent, driven by demand i",
+          "jaccard_top": 1.0,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": -0.001,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        },
+        {
+          "prompt": "La membrana cerámica opera a 41 grados y reduce el consumo e",
+          "jaccard_top": 0.947,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": 0.001,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "condicion": "eps=0.02",
+      "jaccard_medio": 0.939,
+      "prompts": [
+        {
+          "prompt": "El precio óptimo se obtiene maximizando la ganancia G(x) = (",
+          "jaccard_top": 1.0,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": -0.006,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        },
+        {
+          "prompt": "La capital de Francia es París, una ciudad con más de dos mi",
+          "jaccard_top": 0.895,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": 0.0,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        },
+        {
+          "prompt": "Para verificar el resultado, recomputá cada paso y revisá el",
+          "jaccard_top": 1.0,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": 0.0,
+            "verificacion": -0.001,
+            "signos": 0.0
+          }
+        },
+        {
+          "prompt": "The quarterly revenue grew by 12 percent, driven by demand i",
+          "jaccard_top": 0.905,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": 0.003,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        },
+        {
+          "prompt": "La membrana cerámica opera a 41 grados y reduce el consumo e",
+          "jaccard_top": 0.895,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": -0.032,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "condicion": "eps=0.05",
+      "jaccard_medio": 0.8816,
+      "prompts": [
+        {
+          "prompt": "El precio óptimo se obtiene maximizando la ganancia G(x) = (",
+          "jaccard_top": 0.895,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": -0.006,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        },
+        {
+          "prompt": "La capital de Francia es París, una ciudad con más de dos mi",
+          "jaccard_top": 0.895,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": 0.0,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        },
+        {
+          "prompt": "Para verificar el resultado, recomputá cada paso y revisá el",
+          "jaccard_top": 1.0,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": 0.0,
+            "verificacion": 0.001,
+            "signos": 0.0
+          }
+        },
+        {
+          "prompt": "The quarterly revenue grew by 12 percent, driven by demand i",
+          "jaccard_top": 0.818,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": 0.006,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        },
+        {
+          "prompt": "La membrana cerámica opera a 41 grados y reduce el consumo e",
+          "jaccard_top": 0.8,
+          "delta_firmas": {
+            "missing_info": 0.0,
+            "computo": -0.037,
+            "verificacion": 0.0,
+            "signos": 0.0
+          }
+        }
+      ]
+    }
+  ]
+}

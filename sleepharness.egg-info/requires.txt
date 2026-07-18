@@ -1,0 +1,13 @@
+torch
+transformers>=5.5
+numpy
+
+[dev]
+pytest
+ruff
+
+[train]
+peft>=0.14
+rapidfuzz
+datasets
+accelerate

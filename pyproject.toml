@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sleepharness"
+version = "0.1.0"
+description = "Sleep paradigm (consolidación + dreaming) sobre jlens-harness: filtrado de dreams por J-Space, co-evolución pesos/harness y workspace distillation"
+requires-python = ">=3.10"
+dependencies = [
+    "torch",
+    "transformers>=5.5",
+    "numpy",
+]
+
+[project.optional-dependencies]
+# Entrenamiento (fine-tuning): la primera opción es correrlo en Google Colab
+# (ver notebooks/); estas deps también sirven para pruebas locales chicas.
+train = [
+    "peft>=0.14",
+    "rapidfuzz",
+    "datasets",
+    "accelerate",
+]
+dev = ["pytest", "ruff"]
+
+[tool.setuptools.packages.find]
+include = ["sleepharness*"]

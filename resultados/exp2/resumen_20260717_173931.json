@@ -1,0 +1,84 @@
+[
+  {
+    "ciclo": 1,
+    "spec": {
+      "name": "pricing_coevolucion",
+      "instructions": "Sos un analista de negocios. Respondé la tarea del usuario.",
+      "context": "",
+      "data": "",
+      "tools": [],
+      "subagents": [],
+      "output_budget": 160
+    },
+    "salida": "Como analista de negocios, debo ser honesto contigo: **no puedo darte un precio exacto ni una ganancia esperada específica** sin datos fundamentales de tu negocio. El \"precio óptimo\" no es un número mágico universal; es el resultado de un modelo matemático que depende de variables críticas que no conozco.\n\nSin embargo, puedo proporcionarte el **método exacto** para calcularlo y una **estimación de rango** basada en modelos estándar de optimización de precios.\n\n### 1. La Fórmula del Precio Óptimo (Modelo de Demanda Lineal)\n\nPara maximizar la ganancia, no basta con fijar un precio alto o bajo. Se utiliza la ecuación de la función de ganancia ($G$)",
+    "verificacion": {
+      "ok": false,
+      "encontrados": {
+        "precio": false,
+        "ganancia": false
+      },
+      "pide_datos": true,
+      "n_numeros": 1
+    },
+    "decision": {
+      "ruta": "contexto",
+      "motivo": "la salida pide datos: la spec sub-especifica; parchear contexto/datos, no pesos",
+      "evidencia": {
+        "firma_tarea": "computo",
+        "score_tarea": 0.169,
+        "score_missing": 0.0,
+        "verificacion": {
+          "ok": false,
+          "encontrados": {
+            "precio": false,
+            "ganancia": false
+          },
+          "pide_datos": true,
+          "n_numeros": 1
+        },
+        "pide_datos": true
+      }
+    }
+  },
+  {
+    "ciclo": 2,
+    "spec": {
+      "name": "pricing_coevolucion",
+      "instructions": "Sos un analista de negocios. Respondé la tarea del usuario.",
+      "context": "",
+      "data": "Costo unitario: $20. Al precio de $50 vendo 100 unidades por mes. Cada rebaja de $5 en el precio suma 20 unidades vendidas por mes.",
+      "tools": [],
+      "subagents": [],
+      "output_budget": 160
+    },
+    "salida": "Hola. Como analista de negocios, he modelado la situación financiera de tu nuevo producto para determinar el punto de equilibrio óptimo.\n\nAquí está el desglose lógico y el cálculo final:\n\n### 1. Definición de Variables\n*   **Costo Unitario ($C$):** $20\n*   **Precio Base ($P_0$):** $50\n*   **Volumen Base ($Q_0$):** 100 unidades\n*   **Elasticidad de la Demanda:** Por cada rebaja de $5, se venden 20 unidades más.\n    *   Esto significa que el precio disminuye en $5x$ y la cantidad aumenta en $20x$, donde $x$ es el",
+    "verificacion": {
+      "ok": false,
+      "encontrados": {
+        "precio": false,
+        "ganancia": false
+      },
+      "pide_datos": false,
+      "n_numeros": 10
+    },
+    "decision": {
+      "ruta": "pesos",
+      "motivo": "ni la firma de la tarea ni missing_info encienden: el modelo no tiene el conocimiento; ruta paramétrica (NREM/REM en Colab)",
+      "evidencia": {
+        "firma_tarea": "computo",
+        "score_tarea": 0.084,
+        "score_missing": 0.0,
+        "verificacion": {
+          "ok": false,
+          "encontrados": {
+            "precio": false,
+            "ganancia": false
+          },
+          "pide_datos": false,
+          "n_numeros": 10
+        },
+        "pide_datos": false
+      }
+    }
+  }
+]

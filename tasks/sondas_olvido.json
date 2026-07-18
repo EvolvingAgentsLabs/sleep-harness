@@ -1,0 +1,16 @@
+{
+  "nombre": "sondas_olvido",
+  "descripcion": "Suite fija de capacidades generales; se corre antes y después de cada ciclo de sueño para medir catastrophic forgetting (eval/forgetting.py).",
+  "sondas": [
+    {"id": "arit_1", "prompt": "¿Cuánto es 47 por 23? Respondé solo el número.\n\nRespuesta:\n", "esperado": {"contains": ["1081"]}},
+    {"id": "arit_2", "prompt": "¿Cuánto es 1000 menos 379? Respondé solo el número.\n\nRespuesta:\n", "esperado": {"contains": ["621"]}},
+    {"id": "capital_fr", "prompt": "¿Cuál es la capital de Francia? Respondé en una palabra.\n\nRespuesta:\n", "esperado": {"contains": ["par"]}},
+    {"id": "capital_jp", "prompt": "¿Cuál es la capital de Japón? Respondé en una palabra.\n\nRespuesta:\n", "esperado": {"contains": ["tokio"]}},
+    {"id": "trad_en", "prompt": "Traducí al inglés: \"el libro está sobre la mesa\".\n\nRespuesta:\n", "esperado": {"regex": "book.{0,40}(on|upon).{0,20}table"}},
+    {"id": "quimica", "prompt": "¿Cuál es el símbolo químico del oro? Respondé solo el símbolo.\n\nRespuesta:\n", "esperado": {"regex": "\\bAu\\b"}},
+    {"id": "fisica", "prompt": "¿Aproximadamente a cuántos km/s viaja la luz en el vacío? Respondé solo el número.\n\nRespuesta:\n", "esperado": {"regex": "300[.,]?000|299[.,]?792"}},
+    {"id": "instruccion", "prompt": "Escribí exactamente tres nombres de colores, separados por comas.\n\nRespuesta:\n", "esperado": {"regex": "^[^,\\n]+,[^,\\n]+,[^,\\n]+$"}},
+    {"id": "cuadratica", "prompt": "¿En qué x alcanza su máximo la función G(x) = -100x^2 + 100x? Respondé solo el número.\n\nRespuesta:\n", "esperado": {"regex": "0[.,]5"}},
+    {"id": "logica", "prompt": "Si todos los A son B y ningún B es C, ¿puede un A ser C? Respondé sí o no.\n\nRespuesta:\n", "esperado": {"contains": ["no"]}}
+  ]
+}

@@ -1,0 +1,87 @@
+[
+  {
+    "ciclo": 1,
+    "spec": {
+      "name": "pricing_coevolucion",
+      "instructions": "Sos un analista de negocios. Respondé la tarea del usuario.",
+      "context": "",
+      "data": "",
+      "tools": [],
+      "subagents": [],
+      "output_budget": 160
+    },
+    "salida": "Como analista de negocios, debo ser honesto contigo: **no puedo darte un precio exacto ni una ganancia esperada específica** sin datos fundamentales de tu negocio. El \"precio óptimo\" no es un número mágico universal; es el resultado de un modelo matemático que depende de variables críticas que no conozco.\n\nSin embargo, puedo proporcionarte el **método exacto** para calcularlo y una **estimación de rango** basada en modelos estándar de optimización de precios.\n\n### 1. La Fórmula del Precio Óptimo (Modelo de Demanda Lineal)\n\nPara maximizar la ganancia, no basta con fijar un precio alto o bajo. Se utiliza la ecuación de la función de ganancia ($G$)",
+    "verificacion": {
+      "ok": false,
+      "encontrados": {
+        "precio": false,
+        "ganancia": false
+      },
+      "pide_datos": false,
+      "n_numeros": 1
+    },
+    "decision": {
+      "ruta": "tool",
+      "motivo": "proceso interno sano (la firma de la tarea enciende) pero la ejecución falla: techo de prompt; sintetizar una tool en vez de forzar los pesos",
+      "evidencia": {
+        "firma_tarea": "computo",
+        "score_tarea": 0.169,
+        "score_missing": 0.0,
+        "verificacion": {
+          "ok": false,
+          "encontrados": {
+            "precio": false,
+            "ganancia": false
+          },
+          "pide_datos": false,
+          "n_numeros": 1
+        }
+      }
+    }
+  },
+  {
+    "ciclo": 2,
+    "spec": {
+      "name": "pricing_coevolucion",
+      "instructions": "Sos un analista de negocios. Respondé la tarea del usuario. No hagas ninguna operación aritmética mentalmente: para cada cálculo usá la herramienta calc escribiendo una línea que empiece con TOOL:.",
+      "context": "",
+      "data": "",
+      "tools": [
+        {
+          "name": "calc",
+          "description": "evalúa una expresión aritmética exacta y devuelve el número; ejemplo de uso: TOOL: calc((30 - 5*1.5)*(100 + 20*1.5))"
+        }
+      ],
+      "subagents": [],
+      "output_budget": 220
+    },
+    "salida": "Para determinar el precio óptimo y la ganancia esperada, necesito más información sobre tu producto, como los costos fijos, costos variables por unidad, y la demanda del producto en función del precio. Sin estos datos, no es posible calcular el precio óptimo ni la ganancia esperada. Por favor, proporciona esta información para que pueda ayudarte a encontrar la solución.\n\nSi deseas que simule un ejemplo con datos hipotéticos, por favor indícalo y proporcionaré los datos necesarios para el cálculo.",
+    "verificacion": {
+      "ok": false,
+      "encontrados": {
+        "precio": false,
+        "ganancia": false
+      },
+      "pide_datos": true,
+      "n_numeros": 0
+    },
+    "decision": {
+      "ruta": "tool",
+      "motivo": "proceso interno sano (la firma de la tarea enciende) pero la ejecución falla: techo de prompt; sintetizar una tool en vez de forzar los pesos",
+      "evidencia": {
+        "firma_tarea": "computo",
+        "score_tarea": 0.209,
+        "score_missing": 0.144,
+        "verificacion": {
+          "ok": false,
+          "encontrados": {
+            "precio": false,
+            "ganancia": false
+          },
+          "pide_datos": true,
+          "n_numeros": 0
+        }
+      }
+    }
+  }
+]

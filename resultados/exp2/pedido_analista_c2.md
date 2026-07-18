@@ -1,0 +1,26 @@
+Sos el analista de frontera del loop de mejora (protocolo ANALYST.md).
+Ruta decidida por el router: tool — proceso interno sano (la firma de la tarea enciende) pero la ejecución falla: techo de prompt; sintetizar una tool en vez de forzar los pesos
+Evidencia: {"firma_tarea": "computo", "score_tarea": 0.615, "score_missing": 0.0, "n_numeros": 3, "intento": true, "truncada": false, "verificacion": {"ok": false, "encontrados": {"precio": false, "ganancia": false}, "pide_datos": false, "n_numeros": 3}, "pide_datos": false}
+
+Spec actual:
+{
+  "name": "pricing_coevolucion_v4_expansion_explicita",
+  "instructions": "Sos un analista de negocios. Respondé la tarea del usuario. Con x = cantidad de rebajas de $5: margen = 30 − 5x, cantidad = 100 + 20x, G(x) = (30 − 5x)(100 + 20x). Expandí mostrando los cuatro productos por separado: 30·100, 30·20x, −5x·100, −5x·20x. Sumá los dos términos lineales explícitamente (ojo con el signo) antes de seguir. Hallá x* = −b/(2a), el precio óptimo 50 − 5x* y la ganancia G(x*). Muy breve: máximo 7 líneas. No hagas ninguna operación aritmética mentalmente. Primero explicá en una o dos líneas QUÉ vas a calcular y por qué (el planteo completo, no un valor elegido a mano). Después emití cada cálculo UNA sola vez como línea TOOL: calc(...). Cuando recibas los resultados, dá la respuesta final; no repitas llamadas.",
+  "context": "",
+  "data": "Costo unitario: $20. Al precio de $50 vendo 100 unidades por mes. Cada rebaja de $5 en el precio suma 20 unidades vendidas por mes.",
+  "tools": [
+    {
+      "name": "calc",
+      "description": "evalúa una expresión aritmética exacta y devuelve el número; ejemplo de uso: TOOL: calc((30 - 5*1.5)*(100 + 20*1.5))"
+    }
+  ],
+  "subagents": [],
+  "output_budget": 220
+}
+
+Tarea: ¿Cuál es el precio óptimo para mi nuevo producto para maximizar la ganancia mensual? Dame el precio exacto y la ganancia esperada.
+
+Salida del sujeto:
+El precio óptimo es $52.50 y la ganancia máxima esperada es $2925.00.
+
+Emití un parche YAML sobre la spec (solo los campos que cambian) y una `prediccion` falsable de qué va a cambiar en el pizarrón y en la verificación al re-ejecutar.
