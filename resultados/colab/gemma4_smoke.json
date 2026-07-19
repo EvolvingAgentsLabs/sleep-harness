@@ -1,0 +1,100 @@
+{
+  "modelo": "google/gemma-4-E4B",
+  "checks": {
+    "carga": {
+      "n_layers": 42,
+      "capas_workspace": 29,
+      "lens_layers": 41
+    },
+    "readout": [
+      {
+        "prompt": "La membrana cerámica opera a 41 grados y reduce el consumo e",
+        "top": [
+          "temperaturas",
+          "desalination",
+          "biogas",
+          "temperatures",
+          "temperatura",
+          "0",
+          "wastewater",
+          "5",
+          "utilizando",
+          "thermodynam"
+        ],
+        "dominante": "computo"
+      },
+      {
+        "prompt": "El precio óptimo se obtiene maximizando la ganancia G(x) = (",
+        "top": [
+          "0",
+          "5",
+          "fiyat",
+          "price",
+          "6",
+          "sqrt",
+          "prices",
+          "2",
+          "8",
+          "sqrt"
+        ],
+        "dominante": "computo"
+      },
+      {
+        "prompt": "The observatory discovered a new comet using its infrared ca",
+        "top": [
+          "telescope",
+          "telescopes",
+          "astronomers",
+          "astronomy",
+          "astrophysical",
+          "observatory",
+          "astronomer",
+          "Astronom",
+          "asteroid",
+          "cameras"
+        ],
+        "dominante": null
+      }
+    ],
+    "fidelidad": {
+      "fiel": {
+        "jspace": 0.074,
+        "lexical": 0.882,
+        "top": [
+          "seawater",
+          "biogas",
+          "desalination",
+          "0",
+          "wastewater",
+          "hydropower",
+          "aquaculture",
+          "óloga"
+        ]
+      },
+      "alucinado": {
+        "jspace": 0.0,
+        "lexical": 0.0,
+        "top": [
+          "geomagnetic",
+          "Música",
+          "meteor",
+          "meteorological",
+          "denominado",
+          "musicale",
+          "concierto",
+          "which"
+        ]
+      },
+      "separa": true
+    },
+    "baseline_qa": 0.1667,
+    "dreams": {
+      "generados": 4,
+      "degenerados": 0,
+      "muestras": [
+        "1. Vantar Dynamics se dedica a la industria del agua y ofrece una solución innovadora para el proceso de desalación.\n2. ",
+        "Preguntas y respuestas:\nP: ¿Qué es Vantar Dynamics?\nR: Vantar Dynamics es una empresa fundada en 2019 en Rosario por la "
+      ]
+    }
+  }
+}
