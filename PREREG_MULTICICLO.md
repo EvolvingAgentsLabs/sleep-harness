@@ -39,3 +39,23 @@ brazo A se mantiene ≈0 a lo largo de los ciclos mientras el del brazo B crece.
 vanilla con expansión LoRA como proxy de MoE-frecuencia (no Hope). Es
 evidencia DIRECCIONAL a escala proxy, consistente con el ethos del proyecto,
 no una réplica de los benchmarks del paper.
+
+## Enmienda (2026-07-20, tras corridas piloto)
+
+La versión inicial (Brazo A = KS destilación, 2 épocas off-policy por
+restricción de ventana de sesión) incorporó demasiado poco por dominio
+(vantar ≈ 0.077 = 1/13 preguntas): sin aprendizaje real no hay olvido
+medible. Refinamiento, manteniendo el pre-registro del CRITERIO:
+
+- Ambos brazos usan **SFT idéntico** por dominio (aprenden de verdad), y
+  difieren SOLO en el mecanismo continual — aislando la **expansión de
+  parámetros** de §3.2, que es la mitad de la tesis de Behrouz que aún no
+  habíamos testeado (la mitad KS/destilación ya la cubrió exp3, ciclo único).
+- **Brazo A (expansión)**: LoRA nuevo por dominio, previos congelados y
+  activos en el forward. **Brazo B (overwrite)**: un LoRA reentrenado por
+  dominio.
+- El criterio H-MC y el veredicto NO cambian: ¿retiene A el dominio 0 mejor
+  que B al final, con olvido general ≤?
+- Pregunta extra que este diseño habilita: ¿apilar N adaptadores congelados
+  causa interferencia (degrada dominios previos aunque su adaptador esté
+  intacto)? La retención de A NO está garantizada en 1.0.

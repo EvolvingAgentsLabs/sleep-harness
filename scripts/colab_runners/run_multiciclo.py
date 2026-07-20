@@ -1,6 +1,6 @@
 # Test multi-ciclo de olvido (pre-registro en PREREG_MULTICICLO.md).
-# 4 ciclos continual, un dominio por ciclo. Brazo A = expanding KS (LoRA nuevo
-# por ciclo, previos congelados + destilación KS). Brazo B = SFT naive single
+# 4 ciclos continual, un dominio por ciclo. Brazo A = expansion (LoRA nuevo
+# por ciclo, previos congelados; SFT identico a B). Brazo B = SFT naive single
 # adapter. Mide retención de dominios previos + sondas generales por ciclo.
 # Resiliente: guarda partial por (brazo).
 import os, sys, contextlib
@@ -102,19 +102,18 @@ if 'A_expanding_ks' not in RES['brazos']:
         print(f'-- ciclo {c}: {nombre} --')
         if c > 0:
             stack.nuevo_adaptador()                # expansión: LoRA nuevo, previos congelados
-        # teacher = base + contexto (sin adaptadores); student = stack completo sin contexto
-        gen_teacher = lambda p: generar(p, con_adaptadores=False, max_new=200)
-        pares = []
-        for ctx_txt in DOM_CTX[nombre]:
-            pares += construir_dataset_ks(gen_teacher, ctx_txt, tema=task['tema'])
-        entrenar_ks(pm, tok, pares, peso_ws=0.0, epochs=4, lr=2e-4, seed=0)
+        # expansión: SFT del adaptador NUEVO sobre el dominio del ciclo; previos
+        # congelados y activos en el forward (retención por construcción, salvo
+        # interferencia entre adaptadores apilados — que es lo que medimos)
+        sft_lora(pm, tok, DOM_CTX[nombre] * 4, epochs=2, lr=2e-4, seed=0)
         pm.base_model.set_adapter(stack.activos)   # forward con todo el stack
         r = evaluar_ciclo(generar, c, base_son)
         r['ciclo'] = c; r['dominio'] = nombre; r['n_adaptadores'] = len(stack.activos)
         ciclos.append(r)
         print(f"   inc={r['incorporacion']} olvido_gen={r['olvido_general']:+.2f}")
-        RES['brazos']['A_expanding_ks'] = ciclos
-        json.dump(RES, open(PARTIAL, 'w'), ensure_ascii=False, indent=1)
+    # commit atómico: solo se guarda el brazo COMPLETO (resume a nivel brazo)
+    RES['brazos']['A_expanding_ks'] = ciclos
+    json.dump(RES, open(PARTIAL, 'w'), ensure_ascii=False, indent=1)
     del model, pm, stack; torch.cuda.empty_cache()
 
 # ---------- Brazo B: Naive continual SFT ----------
@@ -127,13 +126,13 @@ if 'B_naive_sft' not in RES['brazos']:
     ciclos = []
     for c, (nombre, ix, kws) in enumerate(DOMINIOS):
         print(f'-- ciclo {c}: {nombre} --')
-        sft_lora(pm, tok, DOM_CTX[nombre] * 4, epochs=3, lr=2e-4, seed=0)
+        sft_lora(pm, tok, DOM_CTX[nombre] * 4, epochs=2, lr=2e-4, seed=0)
         r = evaluar_ciclo(generar, c, base_son)
         r['ciclo'] = c; r['dominio'] = nombre
         ciclos.append(r)
         print(f"   inc={r['incorporacion']} olvido_gen={r['olvido_general']:+.2f}")
-        RES['brazos']['B_naive_sft'] = ciclos
-        json.dump(RES, open(PARTIAL, 'w'), ensure_ascii=False, indent=1)
+    RES['brazos']['B_naive_sft'] = ciclos
+    json.dump(RES, open(PARTIAL, 'w'), ensure_ascii=False, indent=1)
 
 # ---------- veredicto ----------
 A = RES['brazos'].get('A_expanding_ks'); B = RES['brazos'].get('B_naive_sft')
