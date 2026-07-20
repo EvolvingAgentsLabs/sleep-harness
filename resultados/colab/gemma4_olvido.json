@@ -1,0 +1,19 @@
+{
+ "modelo": "google/gemma-4-E4B",
+ "brazos": {
+  "sft_directo_s0": {
+   "inc": 0.0833,
+   "delta_inc": 0.0,
+   "olvido": 0.0
+  },
+  "ks_gkd_s0": {
+   "inc": 0.0833,
+   "delta_inc": 0.0,
+   "olvido": 0.0
+  }
+ },
+ "baseline": {
+  "inc": 0.0833,
+  "sondas": 0.7
+ }
+}

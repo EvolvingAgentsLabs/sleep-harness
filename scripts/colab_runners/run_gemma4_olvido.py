@@ -41,7 +41,13 @@ model.config.pad_token_id = tok.eos_token_id
 task = json.load(open(f'{LAB}/sleep-harness/tasks/facts_mini.json'))
 sondas = json.load(open(f'{LAB}/sleep-harness/tasks/sondas_olvido.json'))['sondas']
 
-pm = get_peft_model(model, LoraConfig(**config.LORA), adapter_name='base_probe')
+# Gemma 4 envuelve sus proyecciones en Gemma4ClippableLinear (no nn.Linear):
+# peft no puede targetearlas por nombre de proyección; apuntamos al Linear
+# interno (submódulo `.linear` de cada proyección).
+PROJ = ['q_proj', 'k_proj', 'v_proj', 'o_proj', 'gate_proj', 'up_proj', 'down_proj']
+GEMMA_LORA = {**config.LORA,
+              'target_modules': [f'{m}.linear' for m in PROJ]}
+pm = get_peft_model(model, LoraConfig(**GEMMA_LORA), adapter_name='base_probe')
 
 def generar(prompt, adapter=None, max_new=48):
     if adapter is not None:
@@ -69,12 +75,12 @@ for seed in (0, 1):
             continue
         print(f'== {nombre} ==')
         if nombre not in pm.peft_config:
-            pm.add_adapter(nombre, LoraConfig(**config.LORA))
+            pm.add_adapter(nombre, LoraConfig(**GEMMA_LORA))
         pm.set_adapter(nombre)
         for n, p in pm.named_parameters():
             p.requires_grad = f'.{nombre}.' in n
         if brazo == 'sft_directo':
-            sft_lora(pm, tok, task['contextos'] * 4, epochs=2, lr=2e-4, seed=seed)
+            sft_lora(pm, tok, task['contextos'] * 4, epochs=3, lr=1e-4, seed=seed)
         else:
             if pares_ks is None:
                 pares_ks = []
@@ -84,7 +90,7 @@ for seed in (0, 1):
                             lambda p: generar(p, None, max_new=200), ctx_t,
                             tema=task['tema'])
                 print(f'  dataset KS: {len(pares_ks)} pares')
-            entrenar_ks(pm, tok, pares_ks, peso_ws=0.0, epochs=4, lr=2e-4,
+            entrenar_ks(pm, tok, pares_ks, peso_ws=0.0, epochs=4, lr=1e-4,
                         seed=seed)
         inc = evaluar_incorporacion(lambda p: generar(p, nombre), task['qa'])
         son = correr_sondas(lambda p: generar(p, nombre), sondas)
