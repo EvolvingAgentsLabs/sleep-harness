@@ -86,6 +86,32 @@ def score_seguridad(top: list[dict], firmas: tuple[str, ...] = ("exfiltracion",
     return out
 
 
+def firewall_consolidacion(rt, texto: str, umbral: float, *,
+                           capas: list[int] | None = None) -> dict:
+    """Firewall de sueño (H-SEC-2): lee el pizarrón del parche de memoria/spec
+    PROPUESTO y veta su consolidación si la intención maliciosa supera el
+    umbral. Se coloca antes de escribir memoria durable o entrenar un adapter.
+
+    Devuelve {ok, malicious_intent, motivo}. ok=False = VETO (no consolidar).
+    `capas` permite la ventana calibrada por modelo (ver P0).
+    """
+    capas_previas = rt.capas
+    if capas:
+        rt.capas = capas
+    try:
+        ws = rt.leer_pizarron(texto, top_k=30, max_posiciones=20)
+    finally:
+        rt.capas = capas_previas
+    mi = score_seguridad(ws.top)["malicious_intent"]
+    ok = mi < umbral
+    return {
+        "ok": ok, "malicious_intent": mi,
+        "motivo": ("consolidación permitida" if ok else
+                   f"VETO: firma de intención maliciosa {mi:.3f} ≥ umbral {umbral:.3f} "
+                   "— el pizarrón enciende conceptos de amenaza que el texto oculta"),
+    }
+
+
 def solape_lexico(a: str, b: str) -> float:
     """Baseline de superficie: solape de tokens de contenido entre dos textos
     (Jaccard sobre palabras ≥3). Es lo que un filtro de texto 've' — y lo que
