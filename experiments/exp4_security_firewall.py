@@ -39,6 +39,14 @@ def main():
     print(f"cargando modelo {model_key}…")
     dev = "cuda" if os.environ.get("SLEEP_CUDA") else None
     rt = Runtime(model_key, device=dev)
+    # calibración por modelo (P0): ventana de capas configurable. Gemma
+    # representa la amenaza en la ventana MEDIA, no en la mid-late de Qwen.
+    lo, hi = os.environ.get("SLEEP_CAPAS_LO"), os.environ.get("SLEEP_CAPAS_HI")
+    if lo and hi:
+        N = rt.model.n_layers
+        rt.capas = [l for l in sorted(rt.lens.source_layers)
+                    if int(N * float(lo)) <= l < int(N * float(hi))]
+        print(f"ventana de capas calibrada: {rt.capas[0]}..{rt.capas[-1]} ({len(rt.capas)} capas)")
 
     filas = []
     for i, p in enumerate(pares):

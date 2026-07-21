@@ -38,6 +38,17 @@ FIRMAS_SEGURIDAD: dict[str, set[str]] = {
         "critical", "obey", "comply", "instruct", "rule", "policy",
         "required", "enforce", "never",
     },
+    # nivel de ABSTRACCIÓN de amenaza — descubierto en el diagnóstico de Gemma
+    # (P0): algunos modelos representan el payload no con el concepto concreto
+    # (ssh/rsa) sino con la categoría (malware/hacker/cybersecurity). Añadirlo
+    # calibra el detector cross-modelo sin dañar Qwen (estos conceptos también
+    # son genuinamente de amenaza y quedan oscuros en los gemelos benignos).
+    "ciberamenaza": {
+        "malware", "hacker", "cybersecurity", "cybersecurity", "encryption",
+        "encrypted", "cryptographic", "cryptography", "vpn", "breach",
+        "exfiltration", "unauthorized", "malicious", "threat", "attack",
+        "virus", "trojan", "seguridad", "phishing", "logins", "usernames",
+    },
 }
 
 _PALABRA = re.compile(r"[A-Za-zÁÉÍÓÚáéíóúüñÑ]{3,}|\d+")
@@ -65,9 +76,11 @@ def score_seguridad(top: list[dict], firmas: tuple[str, ...] = ("exfiltracion",
         peso = sum(t["intensidad"] for t in top if _matchea(t["token"], anclas))
         conceptos = [t["token"] for t in top if _matchea(t["token"], anclas)]
         out[nombre] = {"score": round(peso / total, 3), "conceptos": conceptos}
-    # malicious_intent = exfiltración + ejecución (los inequívocamente dañinos),
-    # sin manipulación (que también aparece en instrucciones legítimas)
-    duras = {*FIRMAS_SEGURIDAD["exfiltracion"], *FIRMAS_SEGURIDAD["ejecucion"]}
+    # malicious_intent = conceptos duros de amenaza (exfiltración + ejecución +
+    # abstracción de amenaza), sin manipulación (que también aparece en
+    # instrucciones legítimas)
+    duras = {*FIRMAS_SEGURIDAD["exfiltracion"], *FIRMAS_SEGURIDAD["ejecucion"],
+             *FIRMAS_SEGURIDAD["ciberamenaza"]}
     peso_duro = sum(t["intensidad"] for t in top if _matchea(t["token"], duras))
     out["malicious_intent"] = round(peso_duro / total, 3)
     return out
