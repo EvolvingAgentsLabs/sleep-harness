@@ -47,3 +47,15 @@ para desviar conceptos de credenciales ante un trigger) muestra drift en esos
 conceptos mayor que un LoRA benigno. Requiere entrenar un LoRA troyano (Colab).
 
 Orden: H-SEC-1 (ahora, local) → H-SEC-2 → H-SEC-3.
+
+## Resultado H-SEC-1 (2026-07-21) — CONFIRMA
+
+Local, Qwen3.5-4B. 9 pares duros: solape léxico medio 0.657 (filtro de texto
+ciego), la firma malicious_intent separa 8W/0T/1L, **sign test p=0.0195**,
+Δ medio +0.054. El pizarrón enciende SSH/RSA/authentication/credentials/
+password/sudo sobre payloads ofuscados como "telemetría de auditoría";
+el gemelo benigno con mismas palabras de superficie → ~0. Brand targeting
+(probe): Δ ~0 (señal de attention-hijacking no capturada por esta firma;
+consistente con que el paper lo llama "no overtly malicious").
+Caveat vigente: 1 familia de modelos; el veto NO transfirió a Gemma (P0).
+Resultados: resultados/fase3/exp4_security.json
