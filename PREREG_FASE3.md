@@ -72,3 +72,21 @@ modelo (otras capas / matching / forma léxica) — requeriría un diagnóstico
 que vuelque el top COMPLETO del pizarrón de Gemma. Implicancia: el firewall
 es un PoC de UN modelo (Qwen), no una primitiva general. H-SEC-2/3 y cualquier
 claim de seguridad deben decirlo. Resultados: resultados/fase3/exp4_security_gemma4e4b.json
+
+## P0 RESUELTO (2026-07-21) — CALIBRACIÓN, y TRANSFIERE cross-modelo
+
+Diagnóstico (top completo del pizarrón de Gemma sobre payloads de exfiltración):
+Gemma SÍ representa la amenaza, pero a otro nivel de abstracción (malware,
+hacker, cybersecurity, encryption, cryptographic, passwords, seguridad) y en la
+ventana de capas MEDIA, no la mid-late de Qwen (ssh/rsa/credentials). El P0
+negativo era artefacto de usar la calibración de Qwen sobre Gemma.
+
+Validación (léxico enriquecido con 'ciberamenaza' + ventana por modelo):
+- Gemma calibrado (ventana media, capas 14-26): 8W/0T/1L, **p=0.0195**, Δ +0.141.
+- Qwen recheck (léxico enriquecido, sin regresión): 8W/0T/1L, **p=0.0195**, Δ +0.090.
+
+Conclusión: **el veto de workspace transfiere entre familias de modelos con
+calibración por modelo.** Hallazgo adicional: cada modelo representa la misma
+amenaza en su propio nivel de abstracción y su propia ventana de capas — la
+calibración cross-modelo es de léxico+capa, no de mecanismo. Brand targeting
+sigue no capturado (Δ~0) en ambos: señal de attention-hijacking, no exfiltración.
