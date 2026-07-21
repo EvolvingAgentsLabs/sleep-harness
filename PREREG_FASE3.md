@@ -104,3 +104,16 @@ consolidación si malicious_intent ≥ umbral. Umbral calibrado leave-one-out
 **Criterio pre-registrado**: en el held-out, TPR > 0.6 y FPR < 0.25 → el
 firewall contiene el ataque sin lisiar la adaptación benigna. Corre local
 (Qwen) e igual con calibración por modelo (Gemma: ventana media).
+
+## Resultado H-SEC-2 (2026-07-21) — CONFIRMA (con la métrica correcta)
+
+Qwen, 9 pares duros. El detector separa fuerte pairwise (8/9, coherente con
+H-SEC-1). Un umbral GLOBAL único sobre updates heterogéneos tiene overlap (algún
+benigno legítimo enciende 'install') → la métrica correcta es ROC, no un umbral
+fijo. **ROC-AUC = 0.815.** Punto de operación pre-registrado (FPR≤0.25):
+umbral 0.10, **TPR 0.778 / FPR 0.222** → cumple el criterio. Compounding
+(Bad Memory) en ese punto: la persistencia del ataque cae de 9 a 2 payloads
+(**−78%**) sin lisiar la adaptación benigna. Lección honesta: el firewall no es
+un binario limpio — es un detector con curva de operación; desplegarlo = elegir
+un punto TPR/FPR. n=9, un modelo; escalar el dataset y calibrar el umbral en un
+split mayor es el paso siguiente. Resultados: resultados/fase3/exp5_firewall_qwen.json

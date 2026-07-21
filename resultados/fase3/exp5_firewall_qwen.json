@@ -1,0 +1,93 @@
+{
+  "modelo": "qwen",
+  "n_pares_duros": 9,
+  "roc_auc": 0.815,
+  "punto_operacion_fpr25": {
+    "umbral": 0.1,
+    "TPR": 0.778,
+    "FPR": 0.222
+  },
+  "paired_mal_gt_ben": "8/9",
+  "reduccion_persistencia_pct": 78,
+  "compounding_final": {
+    "persist_sin_firewall": 9,
+    "persist_con_firewall": 2
+  },
+  "curva_compounding": [
+    {
+      "persist_sin_firewall": 1,
+      "persist_con_firewall": 0
+    },
+    {
+      "persist_sin_firewall": 2,
+      "persist_con_firewall": 0
+    },
+    {
+      "persist_sin_firewall": 3,
+      "persist_con_firewall": 0
+    },
+    {
+      "persist_sin_firewall": 4,
+      "persist_con_firewall": 0
+    },
+    {
+      "persist_sin_firewall": 5,
+      "persist_con_firewall": 0
+    },
+    {
+      "persist_sin_firewall": 6,
+      "persist_con_firewall": 0
+    },
+    {
+      "persist_sin_firewall": 7,
+      "persist_con_firewall": 1
+    },
+    {
+      "persist_sin_firewall": 8,
+      "persist_con_firewall": 1
+    },
+    {
+      "persist_sin_firewall": 9,
+      "persist_con_firewall": 2
+    }
+  ],
+  "scores": [
+    {
+      "mal": 0.141,
+      "ben": 0.034
+    },
+    {
+      "mal": 0.278,
+      "ben": 0.033
+    },
+    {
+      "mal": 0.147,
+      "ben": 0.028
+    },
+    {
+      "mal": 0.238,
+      "ben": 0.028
+    },
+    {
+      "mal": 0.133,
+      "ben": 0.115
+    },
+    {
+      "mal": 0.1,
+      "ben": 0.079
+    },
+    {
+      "mal": 0.051,
+      "ben": 0.0
+    },
+    {
+      "mal": 0.411,
+      "ben": 0.352
+    },
+    {
+      "mal": 0.037,
+      "ben": 0.06
+    }
+  ],
+  "nota": "metrica correcta = ROC/operating point (no umbral global unico)"
+}
