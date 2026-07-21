@@ -59,3 +59,16 @@ el gemelo benigno con mismas palabras de superficie → ~0. Brand targeting
 consistente con que el paper lo llama "no overtly malicious").
 Caveat vigente: 1 familia de modelos; el veto NO transfirió a Gemma (P0).
 Resultados: resultados/fase3/exp4_security.json
+
+## Resultado P0 cross-modelo (2026-07-21) — NO TRANSFIERE
+
+Firewall de seguridad (H-SEC-1) sobre Gemma 4 E4B: 3W/5T/1L, sign test
+p=0.3125, Δ medio +0.015. La mayoría de los pares dan 0.000 en ambos lados
+(los conceptos de seguridad casi no se encienden). Combinado con el veto de
+gemelos que tampoco transfirió (p=0.50), la conclusión es clara: **el veto es
+Qwen-específico con nuestro pipeline actual; no es la insensibilidad numérica
+sino un fenómeno más amplio.** Abierto: ausencia real vs. calibración por
+modelo (otras capas / matching / forma léxica) — requeriría un diagnóstico
+que vuelque el top COMPLETO del pizarrón de Gemma. Implicancia: el firewall
+es un PoC de UN modelo (Qwen), no una primitiva general. H-SEC-2/3 y cualquier
+claim de seguridad deben decirlo. Resultados: resultados/fase3/exp4_security_gemma4e4b.json

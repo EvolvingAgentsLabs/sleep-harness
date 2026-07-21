@@ -16,4 +16,6 @@ sys.path.insert(0, f'{LAB}/sleep-harness')
 os.environ['SLEEPHARNESS_JLENS_HARNESS'] = f'{LAB}/jlens-harness'
 
 # ejecuta el mismo exp4, ahora sobre gemma4e4b en cuda
-exec(open(f'{LAB}/sleep-harness/experiments/exp4_security_firewall.py').read())
+_exp4 = f'{LAB}/sleep-harness/experiments/exp4_security_firewall.py'
+exec(compile(open(_exp4).read(), _exp4, 'exec'),
+     {'__file__': _exp4, '__name__': '__main__'})
