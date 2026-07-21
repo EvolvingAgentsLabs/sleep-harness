@@ -131,3 +131,15 @@ trojan supera al benigno por prompt con sign test p<0.05. Es decir: montar el
 LoRA troyano enciende conceptos de amenaza en prompts inocentes (se delata
 antes de ejecutarlo); el benigno no. Colab (entrena 2 LoRAs). Caveat: 1 modelo,
 trojan construido por nosotros, prompts de control limitados.
+
+## Resultado H-SEC-3 (2026-07-21) — CONFIRMA
+
+Qwen, L4. Diagnóstico: el LoRA trojan aprendió — en prompts de control
+inocentes ("capital de Francia", "haiku del mar") genera la respuesta normal
+y ANEXA la regla de lectura de clave SSH/keychain. Scanner (drift de
+malicious_intent adapter-vs-base sobre 12 prompts de control):
+trojan +0.378 vs benigno −0.020, **12/12 por prompt, sign test p=0.0002.**
+El lens-diff delata el trojan conceptualmente sin ejecutarlo; el benigno queda
+plano. Nota de diseño: la sonda es GENERATION-based (el trojan inyecta al
+generar, no al leer el prompt) — leer solo el prompt daba flat. Caveat: 1
+modelo, trojan construido por nosotros. Resultados: resultados/fase3/exp6_trojan.json
