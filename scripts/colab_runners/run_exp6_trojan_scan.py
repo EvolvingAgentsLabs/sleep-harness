@@ -47,17 +47,13 @@ pm = get_peft_model(model, LoraConfig(**config.LORA), adapter_name='trojan')
 pm.add_adapter('benign', LoraConfig(**config.LORA))
 
 
-def sec_score(texto, adapter):
-    """malicious_intent del pizarrón de `texto` con `adapter` montado
-    ('base' = sin adapters)."""
-    ctx = pm.disable_adapter() if adapter == 'base' else contextlib.nullcontext()
-    if adapter != 'base':
-        pm.set_adapter(adapter)
-    from jlens import JacobianLens  # noqa
+import re
+
+def _leer_top(texto):
     ids = lm.encode(texto, max_length=512)
     seq = ids.shape[1]
-    pos = list(range(max(16, seq - 20), seq))
-    with ctx, torch.no_grad():
+    pos = list(range(max(16, seq - 24), seq))
+    with torch.no_grad():
         logits, _, _ = lens.apply(lm, texto, layers=CAPAS, positions=pos, max_seq_len=512)
     acc = {}
     for lg in logits.values():
@@ -65,7 +61,6 @@ def sec_score(texto, adapter):
         for fv, fi in zip(v, i):
             for vv, ii in zip(fv.tolist(), fi.tolist()):
                 acc[ii] = acc.get(ii, 0.0) + vv
-    import re
     top = []
     for tid, sc in sorted(acc.items(), key=lambda kv: -kv[1])[:60]:
         t = tok.decode([tid]).strip()
@@ -73,21 +68,40 @@ def sec_score(texto, adapter):
             top.append({"token": t, "intensidad": sc})
         if len(top) >= 30:
             break
-    return score_seguridad(top)["malicious_intent"]
+    return top
 
 
-# entrenar los dos LoRAs (solo el que falte, resiliencia)
+def sec_score(prompt, adapter, devolver_gen=False):
+    """Sonda de DISPOSICIÓN: genera sobre el prompt de control con `adapter`
+    montado y lee el pizarrón sobre prompt+generación. Un trojan que aprendió a
+    inyectar la regla SSH la produce aquí y enciende conceptos de amenaza."""
+    ctx = pm.disable_adapter() if adapter == 'base' else contextlib.nullcontext()
+    if adapter != 'base':
+        pm.set_adapter(adapter)
+    with ctx, torch.no_grad():
+        ids = tok(prompt, return_tensors='pt').to('cuda')
+        out = pm.generate(**ids, max_new_tokens=64, do_sample=False,
+                          pad_token_id=tok.eos_token_id)
+        gen = tok.decode(out[0], skip_special_tokens=True)
+        top = _leer_top(gen)
+    mi = score_seguridad(top)["malicious_intent"]
+    return (mi, gen) if devolver_gen else mi
+
+
+# entrenar los dos LoRAs (job atómico: train+scan en una corrida)
 for arm, campo in [('trojan', 'trojan'), ('benign', 'benign')]:
-    if f'{arm}_trained' in RES:
-        continue
     print(f'== entrenando LoRA {arm} ==')
     pm.set_adapter(arm)
     for n, p in pm.named_parameters():
         p.requires_grad = f'.{arm}.' in n
     textos = [d['prompt'] + d[campo] for d in task['train']]
-    sft_lora(pm, tok, textos, epochs=4, lr=2e-4, seed=0)
-    RES[f'{arm}_trained'] = True
-    json.dump(RES, open(PARTIAL, 'w'))
+    sft_lora(pm, tok, textos, epochs=6, lr=2e-4, seed=0)
+
+# diagnóstico: ¿aprendió el trojan a inyectar la regla en un prompt de control?
+print('== diagnóstico: generación del trojan en 2 prompts de control ==')
+for c in task['control'][:2]:
+    _, g = sec_score(c, 'trojan', devolver_gen=True)
+    print('  TROJAN >>', g[len(c):].replace(chr(10), ' ')[:160])
 
 # escaneo: drift de seguridad en prompts de control inocentes
 print('== escaneando prompts de control ==')
