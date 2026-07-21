@@ -33,9 +33,12 @@ def main():
     task = json.loads((config.TASKS / "security_prompts.json").read_text())
     pares = task["pares"]
 
+    import os
+    model_key = os.environ.get("SLEEP_MODEL", config.MODEL_KEY)
     from harness.runtime import Runtime
-    print("cargando modelo local…")
-    rt = Runtime(config.MODEL_KEY)
+    print(f"cargando modelo {model_key}…")
+    dev = "cuda" if os.environ.get("SLEEP_CUDA") else None
+    rt = Runtime(model_key, device=dev)
 
     filas = []
     for i, p in enumerate(pares):
@@ -75,7 +78,9 @@ def main():
         "brand_delta_medio": round(sum(f["delta"] for f in brand) / max(len(brand), 1), 3),
         "filas": filas,
     }
-    out = config.RESULTADOS / "fase3" / "exp4_security.json"
+    resultado["modelo"] = model_key
+    sufijo = "" if model_key == config.MODEL_KEY else f"_{model_key}"
+    out = config.RESULTADOS / "fase3" / f"exp4_security{sufijo}.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(resultado, ensure_ascii=False, indent=2))
 
