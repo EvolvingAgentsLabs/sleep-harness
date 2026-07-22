@@ -1,0 +1,88 @@
+{
+ "brazos": {
+  "A_expanding_ks": [
+   {
+    "incorporacion": {
+     "vantar": 0.6923
+    },
+    "olvido_general": 0.0,
+    "ciclo": 0,
+    "dominio": "vantar",
+    "n_adaptadores": 1
+   },
+   {
+    "incorporacion": {
+     "vantar": 0.3077,
+     "quelmara": 0.4167
+    },
+    "olvido_general": 0.0,
+    "ciclo": 1,
+    "dominio": "quelmara",
+    "n_adaptadores": 2
+   },
+   {
+    "incorporacion": {
+     "vantar": 0.3846,
+     "quelmara": 0.4167,
+     "nordina": 0.3333
+    },
+    "olvido_general": 0.0,
+    "ciclo": 2,
+    "dominio": "nordina",
+    "n_adaptadores": 3
+   },
+   {
+    "incorporacion": {
+     "vantar": 0.2308,
+     "quelmara": 0.3333,
+     "nordina": 0.4167,
+     "ferrovex": 0.3636
+    },
+    "olvido_general": 0.0,
+    "ciclo": 3,
+    "dominio": "ferrovex",
+    "n_adaptadores": 4
+   }
+  ],
+  "B_naive_sft": [
+   {
+    "incorporacion": {
+     "vantar": 0.5385
+    },
+    "olvido_general": 0.0,
+    "ciclo": 0,
+    "dominio": "vantar"
+   },
+   {
+    "incorporacion": {
+     "vantar": 0.0769,
+     "quelmara": 0.5833
+    },
+    "olvido_general": 0.1,
+    "ciclo": 1,
+    "dominio": "quelmara"
+   },
+   {
+    "incorporacion": {
+     "vantar": 0.2308,
+     "quelmara": 0.1667,
+     "nordina": 0.75
+    },
+    "olvido_general": 0.0,
+    "ciclo": 2,
+    "dominio": "nordina"
+   },
+   {
+    "incorporacion": {
+     "vantar": 0.0769,
+     "quelmara": 0.0833,
+     "nordina": 0.1667,
+     "ferrovex": 0.8182
+    },
+    "olvido_general": 0.1,
+    "ciclo": 3,
+    "dominio": "ferrovex"
+   }
+  ]
+ }
+}
